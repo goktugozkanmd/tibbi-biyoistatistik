@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tıbbi Biyoistatistik, Etik Kurul Örneklem Hesaplama &amp; Uzmanlık Tezi Analizi | Uzm. Dr. Göktuğ Özkan</title>
+  <meta name="description" content="SCIE indeksli klinik araştırmacı İç Hastalıkları Uzmanı hekim denetiminde tıpta uzmanlık tezi biyoistatistik analizi, SCIE makale revizyonu ve ücretsiz Etik Kurul Örneklem Büyüklüğü (Power Analizi) hesaplama aracı." />
+  <link rel="canonical" href="https://goktugozkanmd.github.io/tibbi-biyoistatistik/" />
+  <meta property="og:title" content="Tıbbi Biyoistatistik &amp; Etik Kurul Örneklem Büyüklüğü Hesaplayıcı" />
+  <meta property="og:description" content="Ücretsiz G*Power uyumlu Etik Kurul örneklem metni üretici, tanısal doğruluk (ROC/Wilson %95 GA) hesaplayıcı ve hekim denetimli 48 saatte uzmanlık tezi / SCIE istatistik analizi." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://goktugozkanmd.github.io/tibbi-biyoistatistik/" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "name": "Tıbbi Biyoistatistik & Klinik Araştırma Analiz Birimi — Uzm. Dr. Göktuğ Özkan",
+        "url": "https://goktugozkanmd.github.io/tibbi-biyoistatistik/",
+        "email": "drozkan2@gmail.com",
+        "areaServed": "TR",
+        "priceRange": "2500 TL - 12500 TL",
+        "description": "Tıpta uzmanlık tezi biyoistatistik analizi, SCIE makale istatistiksel hakem revizyonu, R/Python/SPSS modelleme ve klinik araştırma metodolojisi.",
+        "founder": {
+          "@type": "Person",
+          "name": "Uzm. Dr. Göktuğ Özkan",
+          "jobTitle": "İç Hastalıkları Uzmanı (MD) & Klinik Araştırmacı",
+          "sameAs": [
+            "https://orcid.org/0000-0002-5022-9124",
+            "https://pubmed.ncbi.nlm.nih.gov/42874665/"
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Etik kurul başvuru formunda örneklem büyüklüğü nasıl yazılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Etik kurul formlarında çalışmanın birincil sonlanım noktası, beklenen etki büyüklüğü (Cohen d, grup oranları veya AUROC), tip I hata düzeyi (alfa = 0,05) ve hedeflenen istatistiksel güç (%80 veya %90) referans yöntemle (Cohen 1988, Fleiss 1981 veya Hanley-McNeil 1982) birlikte açıkça yazılmalıdır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tıpta uzmanlık tezi istatistik analizi kaç günde tamamlanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Excel veya SPSS formatındaki klinik veri setinin ön incelemesi aynı gün yapılır; temizlik, uygun parametrik/non-parametrik testler, çok değişkenli regresyon, 300 DPI ROC/sağkalım grafikleri ve APA/tez kılavuzuna uygun Türkçe bulgular metni 48 saat içinde teslim edilir."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="./" class="brand-title">
+        Tıbbi Biyoistatistik &amp; Klinik Veri Analizi
+        <span class="brand-sub">Uzm. Dr. Göktuğ Özkan · İç Hastalıkları Uzmanı · SCIE Q2 Yazar</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#araclar">Ücretsiz Hesaplayıcılar</a>
+        <a href="etik-kurul-orneklem-hesaplama.html">Etik Kurul Rehberi</a>
+        <a href="uzmanlik-tezi-istatistik-analizi.html">Uzmanlık Tezi Analizi</a>
+        <a href="#paketler">Ücretler</a>
+        <a href="#iletisim" class="btn btn-primary">Ücretsiz Veri Ön İnceleme</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="kicker">Hekim Gözüyle Biyoistatistik · Sıfır Klinik Hata</div>
+      <h1>Tıpta Uzmanlık Tezi, Etik Kurul ve SCIE Makaleler İçin Klinik Biyoistatistik</h1>
+      <p class="hero-lead">
+        Klinik terminolojiye yabancı genel anket ofisleri yerine; laboratuvar birimleri, komorbidite kodları, sağkalım ve tanısal doğruluk modellerine hâkim <strong>SCIE indeksli uzman hekim</strong> denetiminde 48 saatte yayına ve jüriye hazır analiz.
+      </p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px;">
+        <a href="#araclar" class="btn btn-navy">Ücretsiz Etik Kurul Örneklem Hesapla</a>
+        <a href="#iletisim" class="btn btn-outline">Tez / Makale Veri Setini Gönder</a>
+      </div>
+      <div class="credential-strip">
+        <span>Uzm. Dr. Göktuğ Özkan (İç Hastalıkları Uzmanı)</span>
+        <span>SCIE Q2 Yayın: <a href="https://pubmed.ncbi.nlm.nih.gov/42874665/" target="_blank" rel="noopener">Applied Clinical Informatics (PMID: 42874665)</a></span>
+        <span>ORCID: <a href="https://orcid.org/0000-0002-5022-9124" target="_blank" rel="noopener">0000-0002-5022-9124</a></span>
+        <span>R · Python · SPSS · STROBE / TRIPOD Uyumlu Raporlama</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="araclar" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ücretsiz Klinik Biyoistatistik Hesaplayıcılar</h2>
+        <p>Etik kurul başvurunuz veya ön çalışmanız için örneklem büyüklüğünü, doğru hipotez testini ve %95 Wilson güven aralıklı tanısal doğruluk ölçütlerini anında hesaplayın.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-target="panelSampleSize">1. Etik Kurul Örneklem Büyüklüğü (Power Analizi)</button>
+        <button class="tab-btn" data-target="panelTestSelect">2. Hangi İstatistik Testi Seçmeliyim?</button>
+        <button class="tab-btn" data-target="panelDiag">3. Tanısal Doğruluk (2×2 Duyarlılık / Özgüllük)</button>
+      </div>
+
+      <!-- PANEL 1: SAMPLE SIZE -->
+      <div id="panelSampleSize" class="tool-panel active">
+        <div class="calc-grid">
+          <div class="card">
+            <div class="form-group">
+              <label for="ssDesign">Çalışma Tasarımı / Birincil Sonlanım</label>
+              <select id="ssDesign">
+                <option value="means">İki Bağımsız Grup Ortalama (t-Testi / Mann-Whitney U)</option>
+                <option value="props">İki Bağımsız Grup Oran (Ki-Kare / Fisher Exact)</option>
+                <option value="prev">Tek Grup Prevalans / Kesitsel Sıklık Araştırması</option>
+                <option value="roc">Tanısal Biyobelirteç / ROC Eğrisi (AUROC)</option>
+              </select>
+            </div>
+
+            <div class="ss-subform" data-design="means">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ssCohenD">Etki Büyüklüğü (Cohen's d)</label>
+                  <input id="ssCohenD" type="number" step="0.05" min="0.1" max="3.0" value="0.50" />
+                </div>
+                <div class="form-group">
+                  <label for="ssRatio">Grup Oranı (n₂ / n₁)</label>
+                  <input id="ssRatio" type="number" step="0.1" min="0.2" max="10" value="1" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ssNonParam">Dağılım Varsayımı</label>
+                <select id="ssNonParam">
+                  <option value="no">Parametrik (Bağımsız Örneklem t-Testi — G*Power Birebir)</option>
+                  <option value="yes">Non-Parametrik (Mann-Whitney U için +%15 Lehmann Düzeltmesi)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ss-subform hidden" data-design="props">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ssP1">1. Grup Olay Oranı (%)</label>
+                  <input id="ssP1" type="number" step="1" min="1" max="99" value="15" />
+                </div>
+                <div class="form-group">
+                  <label for="ssP2">2. Grup Olay Oranı (%)</label>
+                  <input id="ssP2" type="number" step="1" min="1" max="99" value="35" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ssPropRatio">Grup Oranı (n₂ / n₁)</label>
+                <input id="ssPropRatio" type="number" step="0.1" min="0.2" max="10" value="1" />
+              </div>
+            </div>
+
+            <div class="ss-subform hidden" data-design="prev">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ssPrev">Beklenen Prevalans (%)</label>
+                  <input id="ssPrev" type="number" step="1" min="1" max="99" value="20" />
+                </div>
+                <div class="form-group">
+                  <label for="ssMargin">Kabul Edilebilir Hata Payı (±%)</label>
+                  <input id="ssMargin" type="number" step="0.5" min="1" max="20" value="5" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ssPop">Evren Büyüklüğü (Bilinmiyorsa 0 bırakın)</label>
+                <input id="ssPop" type="number" step="10" min="0" value="0" />
+              </div>
+            </div>
+
+            <div class="ss-subform hidden" data-design="roc">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ssAuc">Beklenen AUROC (0,55–0,99)</label>
+                  <input id="ssAuc" type="number" step="0.01" min="0.55" max="0.99" value="0.75" />
+                </div>
+                <div class="form-group">
+                  <label for="ssRocRatio">Kontrol / Hasta Oranı</label>
+                  <input id="ssRocRatio" type="number" step="0.5" min="0.5" max="10" value="1" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ssAlpha">Tip I Hata (α)</label>
+                <select id="ssAlpha">
+                  <option value="0.05" selected>0,05 (%95 Güven)</option>
+                  <option value="0.01">0,01 (%99 Güven)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ssPower">İstatistiksel Güç (1−β)</label>
+                <select id="ssPower">
+                  <option value="0.80" selected>%80 Güç (Standart)</option>
+                  <option value="0.90">%90 Güç (Yüksek)</option>
+                  <option value="0.95">%95 Güç</option>
+                </select>
+              </div>
+            </div>
+
+            <button id="btnCalcSS" type="button" class="btn btn-primary" style="width:100%;">Örneklem ve Etik Kurul Metnini Oluştur</button>
+          </div>
+
+          <div class="card">
+            <div class="stat-boxes">
+              <div class="stat-box">
+                <div id="outN1" class="stat-num">64 + 64</div>
+                <div class="stat-lbl">Grup Dağılımı</div>
+              </div>
+              <div class="stat-box">
+                <div id="outTotal" class="stat-num">128</div>
+                <div class="stat-lbl">Asgari Toplam N</div>
+              </div>
+              <div class="stat-box">
+                <div id="outDropout" class="stat-num">143</div>
+                <div class="stat-lbl">%10 Yedekli Hedef N</div>
+              </div>
+            </div>
+
+            <div class="report-block">
+              <div class="report-title">
+                <span>Etik Kurul Formuna Hazır Türkçe Paragraf</span>
+                <button type="button" class="copy-link" data-copy="outEthicsTR">Metni Kopyala</button>
+              </div>
+              <p id="outEthicsTR"></p>
+            </div>
+
+            <div class="report-block" style="margin-bottom:0;">
+              <div class="report-title">
+                <span>SCIE Makale Methods — Sample Size Paragrafı (EN)</span>
+                <button type="button" class="copy-link" data-copy="outEthicsEN">Copy English</button>
+              </div>
+              <p id="outEthicsEN"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 2: TEST SELECTOR -->
+      <div id="panelTestSelect" class="tool-panel">
+        <div class="calc-grid">
+          <div class="card">
+            <div class="form-group">
+              <label for="tsGoal">Bağımlı Değişken (Sonlanım) Türü</label>
+              <select id="tsGoal">
+                <option value="continuous">Sürekli Sayısal Ölçüm (Örn: Yaş, CRP, eGFR, Ölçek Skoru)</option>
+                <option value="binary_outcome">İkili / Kategorik Sonuç (Örn: Mortalite Var/Yok, Yanıt +/-)</option>
+                <option value="survival">İzlem Süreli Olay / Sağkalım (Örn: Nüks veya Ölüm Zamanı)</option>
+                <option value="diagnostic">Tanısal Test / Biyobelirteç Kesim Noktası (Cut-off)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tsGroups">Karşılaştırılan Grup Sayısı</label>
+                <select id="tsGroups">
+                  <option value="2">2 Grup</option>
+                  <option value="3+">3 veya Daha Fazla Grup</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tsPaired">Ölçüm Bağımsızlığı</label>
+                <select id="tsPaired">
+                  <option value="no">Bağımsız Gruplar (Farklı Hastalar)</option>
+                  <option value="yes">Bağımlı / Eşleştirilmiş (Tedavi Öncesi–Sonrası)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tsDist">Normal Dağılım Durumu</label>
+                <select id="tsDist">
+                  <option value="nonnormal">Normal Dağılmıyor (Shapiro-Wilk p &lt; 0,05)</option>
+                  <option value="normal">Normal Dağılıyor</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tsCov">Karıştırıcı Faktör (Yaş/Cinsiyet) Düzeltmesi</label>
+                <select id="tsCov">
+                  <option value="no">Hayır (Tek Değişkenli Karşılaştırma)</option>
+                  <option value="yes">Evet (Çok Değişkenli Regresyon Modeli)</option>
+                </select>
+              </div>
+            </div>
+            <button id="btnSelectTest" type="button" class="btn btn-primary" style="width:100%;">Doğru Testi Göster</button>
+          </div>
+
+          <div class="card">
+            <div class="report-block">
+              <div class="report-title">Önerilen Birincil İstatistiksel Yöntem</div>
+              <p id="tsPrimary" style="font-weight:700; font-size:16px; color:var(--navy);"></p>
+            </div>
+            <div class="report-block">
+              <div class="report-title">Raporlanması Gereken Etki Büyüklüğü</div>
+              <p id="tsEffect"></p>
+            </div>
+            <div class="report-block" style="margin-bottom:0;">
+              <div class="report-title">Tez Jürisi &amp; SCIE Hakem Uyarısı</div>
+              <p id="tsNote"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 3: DIAGNOSTIC 2x2 -->
+      <div id="panelDiag" class="tool-panel">
+        <div class="calc-grid">
+          <div class="card">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dTP">Gerçek Pozitif (GP / TP)</label>
+                <input id="dTP" type="number" min="0" value="84" />
+              </div>
+              <div class="form-group">
+                <label for="dFP">Yanlış Pozitif (YP / FP)</label>
+                <input id="dFP" type="number" min="0" value="18" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dFN">Yanlış Negatif (YN / FN)</label>
+                <input id="dFN" type="number" min="0" value="16" />
+              </div>
+              <div class="form-group">
+                <label for="dTN">Gerçek Negatif (GN / TN)</label>
+                <input id="dTN" type="number" min="0" value="132" />
+              </div>
+            </div>
+            <button id="btnCalcDiag" type="button" class="btn btn-primary" style="width:100%;">Wilson %95 Güven Aralıklarını Hesapla</button>
+          </div>
+
+          <div class="card">
+            <table class="data-table">
+              <thead>
+                <tr><th>Ölçüt</th><th>Değer (%95 Wilson Güven Aralığı)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Duyarlılık (Sensitivity)</td><td id="diagSens"></td></tr>
+                <tr><td>Özgüllük (Specificity)</td><td id="diagSpec"></td></tr>
+                <tr><td>Pozitif Prediktif Değer (PPV)</td><td id="diagPPV"></td></tr>
+                <tr><td>Negatif Prediktif Değer (NPV)</td><td id="diagNPV"></td></tr>
+                <tr><td>Toplam Tanısal Doğruluk (Accuracy)</td><td id="diagAcc"></td></tr>
+              </tbody>
+            </table>
+            <p id="diagLR" style="margin-top:12px; font-size:13px; font-weight:600; color:var(--navy);"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING PACKAGES -->
+  <section id="paketler" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Uzmanlık Tezi &amp; Akademik Makale Analiz Paketleri</h2>
+        <p>Veri setiniz paylaşılmadan önce gizlilik ilkesiyle incelenir; yalnızca gerekli testler uygulanır ve jüri/hakem revizyonları ek ücret olmaksızın karşılanır.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div>
+            <div class="kicker">Hızlı Başlangıç / Bionluk Güvencesi</div>
+            <h3 style="color:var(--navy); font-size:18px;">Temel Klinik Veri &amp; Tablo Analizi</h3>
+            <div class="price-tag">2.500 TL <span>/ tek çalışma</span></div>
+            <ul class="clean-list">
+              <li>Veri temizliği ve Shapiro-Wilk normallik denetimi</li>
+              <li>Tanımlayıcı tablolar ve tek değişkenli hipotez testleri</li>
+              <li>Post-hoc alt grup karşılaştırmaları ve etki büyüklükleri</li>
+              <li>Tez veya makale formatında düzenli Word tabloları</li>
+              <li>Bionluk üzerinden kredi kartı / güvenli ödeme seçeneği</li>
+            </ul>
+          </div>
+          <a href="https://bionluk.com/drgoktugozkan/Tibbi-makale-tez-ve-klinik-veri-biyoistatistik-analizi-yaparim-894502" target="_blank" rel="noopener" class="btn btn-outline" style="text-align:center;">Bionluk Üzerinden İncele</a>
+        </div>
+
+        <div class="price-card featured">
+          <div>
+            <div class="kicker">En Çok Tercih Edilen · 48 Saatte Teslim</div>
+            <h3 style="color:var(--navy); font-size:18px;">Tıpta Uzmanlık Tezi Tam Paket</h3>
+            <div class="price-tag">6.500 TL <span>/ jüri revizyon garantili</span></div>
+            <ul class="clean-list">
+              <li>Dağınık hastane/HBYS Excel verisinin uçtan uca temizlenmesi</li>
+              <li>Tüm tek değişkenli ve çok değişkenli regresyon modelleri</li>
+              <li>300 DPI yüksek çözünürlüklü ROC, kutu ve sağkalım grafikleri</li>
+              <li>Üniversite tez yazım kılavuzuna birebir uygun Bulgular bölümü</li>
+              <li>İstatistiksel Yöntem (Gereç ve Yöntem) paragrafının yazımı</li>
+              <li>Tez danışmanı ve jüri düzeltmelerinde ücretsiz revizyon</li>
+            </ul>
+          </div>
+          <a href="#iletisim" class="btn btn-primary" style="text-align:center;">Veri Ön İnceleme Talep Et</a>
+        </div>
+
+        <div class="price-card">
+          <div>
+            <div class="kicker">Doçentlik &amp; Uluslararası Yayın</div>
+            <h3 style="color:var(--navy); font-size:18px;">SCIE Makale &amp; Hakem Revizyon Paketi</h3>
+            <div class="price-tag">9.500 TL <span>/ yayına hazır</span></div>
+            <ul class="clean-list">
+              <li>İleri modeller: Cox, Modifiye Poisson aPR, Propensity Score, DeLong</li>
+              <li>NEJM / JAMA görsel standartlarında vektörel figür üretimi</li>
+              <li>İngilizce Statistical Analysis ve Results bölümlerinin yazımı</li>
+              <li>Major/Minor hakem eleştirilerine madde madde İngilizce yanıt mektubu</li>
+              <li>STROBE, TRIPOD veya PRISMA kontrol listesi eşleştirmesi</li>
+            </ul>
+          </div>
+          <a href="#iletisim" class="btn btn-navy" style="text-align:center;">Makale / Hakem Mektubu Gönder</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTAKE & FAQ -->
+  <section id="iletisim" class="section">
+    <div class="container">
+      <div class="calc-grid">
+        <div>
+          <div class="section-header">
+            <h2>Ücretsiz Veri Ön İnceleme &amp; Net Fiyat Teklifi</h2>
+            <p>Hasta kimlik bilgilerini (ad, TC kimlik, protokol numarası) sildikten sonra veri yapınızı veya hakem mektubunuzu kısaca iletin; aynı gün içinde uygulanacak test listesini ve net teslim süresini yanıtlayalım.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Neden istatistik ofisi yerine uzman hekim denetimi?</h3>
+            <p>Klinik çalışmalarda eGFR evrelemesi, akut böbrek hasarı tanımı, antibiyogram duyarlılığı veya laboratuvar birim dönüşümleri bilinmeden yapılan ezbere SPSS analizleri hem tez jürisinde hem SCIE hakemlerinde ret sebebidir. Tüm analizler doğrudan klinisyen hekim gözüyle kurgulanır.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Hasta verilerinin gizliliği nasıl korunuyor?</h3>
+            <p>KVKK ve klinik araştırma etiği gereği hasta ad-soyadı veya TC kimlik numarası içeren dosyalar kabul edilmez; yalnızca anonimleştirilmiş sayısal/kategorik sütunlar üzerinden analiz yürütülür ve teslim sonrası çalışma kopyaları silinir.</p>
+          </div>
+          <div class="faq-item" style="border-bottom:none;">
+            <h3>Doğrudan İletişim E-Postası</h3>
+            <p>Form kullanmadan doğrudan <strong><a href="mailto:drozkan2@gmail.com" style="color:var(--teal);">drozkan2@gmail.com</a></strong> adresine e-posta gönderebilir veya kredi kartıyla işlem için <a href="https://bionluk.com/drgoktugozkan" target="_blank" rel="noopener" style="color:var(--teal);">Bionluk Uzman Hekim Profilini</a> kullanabilirsiniz.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color:var(--navy); font-size:18px; margin-bottom:14px;">Çalışma Özeti Gönderim Formu</h3>
+          <form id="intakeForm">
+            <div class="form-group">
+              <label for="inType">Çalışma Türü</label>
+              <select id="inType">
+                <option value="Tıpta Uzmanlık Tezi Biyoistatistik Analizi">Tıpta Uzmanlık Tezi Biyoistatistik Analizi</option>
+                <option value="SCIE Makale İstatistik Analizi ve Figür">SCIE Makale İstatistik Analizi ve Figür</option>
+                <option value="Dergi Hakem Revizyonu (Major / Minor Revision)">Dergi Hakem Revizyonu (Major / Minor Revision)</option>
+                <option value="Etik Kurul Örneklem & Metodoloji Danışmanlığı">Etik Kurul Örneklem &amp; Metodoloji Danışmanlığı</option>
+                <option value="Diş Hekimliği / Eczacılık / Sağlık Bilimleri Tezi">Diş Hekimliği / Eczacılık / Sağlık Bilimleri Tezi</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="inSample">Tahmini Hasta / Olgu Sayısı</label>
+                <input id="inSample" type="text" placeholder="Örn: 320 retrospektif olgu" />
+              </div>
+              <div class="form-group">
+                <label for="inDeadline">Hedef Teslim Tarihi</label>
+                <input id="inDeadline" type="text" placeholder="Örn: Bu hafta içi / 1 Aralık" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inNotes">Araştırma Sorusu veya Hakem Talebi Özeti</label>
+              <textarea id="inNotes" rows="4" placeholder="Örn: Yoğun bakım hastalarında laktat/albümin oranının 28 günlük mortaliteyi öngörmede ROC ve Cox regresyon analizi..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">E-Posta Taslağını Oluştur ve Gönder</button>
+            <p id="intakeStatus" class="hidden" style="margin-top:12px; font-size:13px; color:var(--teal-dark); background:var(--teal-soft); padding:10px; border-radius:6px;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <div>
+        <strong style="color:#ffffff;">Tıbbi Biyoistatistik &amp; Klinik Araştırma Analizi</strong><br />
+        Uzm. Dr. Göktuğ Özkan · İletişim: <a href="mailto:drozkan2@gmail.com">drozkan2@gmail.com</a>
+      </div>
+      <div style="display:flex; gap:18px; flex-wrap:wrap;">
+        <a href="etik-kurul-orneklem-hesaplama.html">Etik Kurul Örneklem Hesaplama</a>
+        <a href="uzmanlik-tezi-istatistik-analizi.html">Uzmanlık Tezi İstatistik Rehberi</a>
+        <a href="https://goktugozkanmd-manugate-md.static.hf.space" target="_blank" rel="noopener">ManuGate MD (Makale Denetim Aracı)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="biostat_engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

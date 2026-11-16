@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tıpta Uzmanlık Tezi İstatistik Analizi ve Bulgular Yazımı Rehberi (2026)</title>
+  <meta name="description" content="Tıpta uzmanlık tezlerinde en sık yapılan 5 istatistiksel hata, normal dağılım raporlaması, çok değişkenli regresyon, ROC eğrisi ve 48 saatte uzman hekim denetimli analiz." />
+  <link rel="canonical" href="https://goktugozkanmd.github.io/tibbi-biyoistatistik/uzmanlik-tezi-istatistik-analizi.html" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="./" class="brand-title">
+        Tıbbi Biyoistatistik &amp; Klinik Veri Analizi
+        <span class="brand-sub">Uzm. Dr. Göktuğ Özkan · İç Hastalıkları Uzmanı</span>
+      </a>
+      <nav class="nav-links">
+        <a href="./#paketler" class="btn btn-primary">Tez Analiz Paketlerini Gör</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container article-body" style="max-width:820px;">
+      <div class="kicker">Uzmanlık Tezi &amp; Jüri Hazırlık Rehberi</div>
+      <h1 style="color:var(--navy); font-size:28px; margin-bottom:14px;">Tıpta Uzmanlık Tezlerinde Jüri ve Dergi Hakemlerinin En Sık Eleştirdiği 5 İstatistiksel Hata</h1>
+      <p>Asistan hekimlerin yoğun nöbet temposunda topladığı değerli klinik veriler, çoğu zaman tıp terminolojisini bilmeyen genel veri giriş ofislerinde hatalı testlerle işlendiği için tez savunmasında veya tezin SCIE makaleye dönüştürülmesi aşamasında ağır revizyon almaktadır.</p>
+
+      <h2>1. Çarpık Laboratuvar Verilerinde Ortalama ± Standart Sapma Yazmak</h2>
+      <p>CRP, prokalsitonin, troponin, ferritin, D-dimer ve hastanede yatış günü gibi klinik değişkenler neredeyse hiçbir zaman normal dağılmaz. Standart sapmanın ortalamadan büyük olduğu (örneğin CRP: 42,1 ± 65,4 mg/L) bir tabloda Student t-testi kullanılması doğrudan metodolojik ret nedenidir; bu değişkenler <strong>Medyan (25.–75. persentil / IQR)</strong> ile sunulmalıdır.</p>
+
+      <h2>2. Olay Başına Değişken Kuralını (EPV) İhlal Eden Çok Değişkenli Regresyon</h2>
+      <p>Toplam 22 mortalite gözlenen bir yoğun bakım kohortunda çok değişkenli lojistik regresyon modeline 10 farklı değişkenin aynı anda sokulması aşırı uyuma (overfitting) ve genişleyen yapay güven aralıklarına yol açar. Değişken seçimi klinik biyolojik akla (DAG) ve olay sayısına göre sınırlandırılmalıdır.</p>
+
+      <h2>3. Kesitsel Çalışmalarda Yüksek Sıklıklı Sonuç İçin Odds Ratio Raporlamak</h2>
+      <p>İncelenen durum kohortun %20–40'ında görülüyorsa (örneğin poliklinikte nefropati veya malnütrisyon sıklığı), lojistik regresyondan elde edilen Odds Ratio (OR = 3,8) gerçek rölatif riski ciddi biçimde abartır. Güncel SCIE dergiler bu durumda <strong>Modifiye Poisson Regresyonu (robust standart hatalı düzeltilmiş Prevalans Oranı — aPR)</strong> talep etmektedir.</p>
+
+      <h2>4. İki ROC Eğrisini İstatistiksel Test Olmadan Kıyaslamak</h2>
+      <p>Yeni bir biyobelirtecin AUROC değerinin 0,78 ve klasik parametrenin 0,72 çıkması, yeni belirtecin "üstün" olduğunu kanıtlamaz. Aynı hasta grubunda ölçülen iki eğrinin farkı <strong>DeLong testi</strong> p değeri ve %95 fark güven aralığıyla gösterilmelidir.</p>
+
+      <h2>5. Ham Yazılım Ekran Görüntüsü Yapıştırmak</h2>
+      <p>Tez bulgularına ham SPSS çıktı tablolarının veya düşük çözünürlüklü ekran görüntülerinin yapıştırılması hem tez yazım kılavuzlarına aykırıdır hem de yayına dönüşümü imkânsızlaştırır. Tablolar ondalık virgül standardıyla temiz Word tablosu, grafikler ise 300 DPI yayın kalitesinde üretilmelidir.</p>
+
+      <div class="card" style="margin-top:28px; background:var(--bg-alt);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Uzmanlık Tezinizi 48 Saatte Eksiksiz Teslim Alın</h3>
+        <p style="margin-bottom:14px;">Anonimleştirilmiş Excel/SPSS dosyanızı <strong>drozkan2@gmail.com</strong> adresine göndererek ücretsiz ön inceleme, test planı ve net fiyat teklifi alabilirsiniz.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="./#iletisim" class="btn btn-primary">Ücretsiz Ön İnceleme Formu</a>
+          <a href="./#araclar" class="btn btn-outline">Ücretsiz Test Seçici Aracı Dene</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Uzm. Dr. Göktuğ Özkan · <a href="./">Ana Sayfa ve Hesaplayıcılar</a> · <a href="mailto:drozkan2@gmail.com">drozkan2@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

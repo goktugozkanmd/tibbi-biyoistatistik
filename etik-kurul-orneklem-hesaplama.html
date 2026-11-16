@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etik Kurul Örneklem Büyüklüğü Hesaplama ve Power Analizi Metni Örneği (2026)</title>
+  <meta name="description" content="Klinik araştırmalar etik kurul başvuru formu için G*Power uyumlu örneklem büyüklüğü (power analizi) nasıl hesaplanır? Hazır Türkçe ve İngilizce örneklem paragrafı şablonları." />
+  <link rel="canonical" href="https://goktugozkanmd.github.io/tibbi-biyoistatistik/etik-kurul-orneklem-hesaplama.html" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="./" class="brand-title">
+        Tıbbi Biyoistatistik &amp; Klinik Veri Analizi
+        <span class="brand-sub">Uzm. Dr. Göktuğ Özkan · İç Hastalıkları Uzmanı</span>
+      </a>
+      <nav class="nav-links">
+        <a href="./#araclar" class="btn btn-primary">Canlı Örneklem Hesaplayıcıyı Aç</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container article-body" style="max-width:820px;">
+      <div class="kicker">Etik Kurul Metodoloji Rehberi</div>
+      <h1 style="color:var(--navy); font-size:28px; margin-bottom:14px;">Klinik Araştırmalar Etik Kurulu Başvurusunda Örneklem Büyüklüğü (Power Analizi) Nasıl Yazılır?</h1>
+      <p>Türkiye'deki üniversite ve eğitim-araştırma hastanesi etik kurulları, hem prospektif klinik çalışmalarda hem de retrospektif dosya taramalarında rastgele hasta sayısı ("100 hasta alınacaktır") yazılmasını en sık düzeltme (revizyon) gerekçesi yapmaktadır. Etik kurul formunda <strong>birincil sonlanım değişkeni, referans etki büyüklüğü, α yanılma payı ve hedeflenen güç (1−β)</strong> açıkça belirtilmelidir.</p>
+
+      <h2>1. İki Grup Ortalaması Karşılaştırılacaksa (t-Testi / Mann-Whitney U)</h2>
+      <p>Örneğin iki hasta grubunda serum biyobelirteç düzeyi karşılaştırılacaksa, literatürdeki benzer bir çalışmanın ortalama ve standart sapmalarından Cohen's <em>d</em> hesaplanır. Literatürde öncül veri yoksa Cohen (1988) orta etki büyüklüğü (<em>d</em> = 0,50), α = 0,05 ve %80 güç ile grup başına en az 64 (toplam 128) olgu gerekir. Dağılım çarpık ve Mann-Whitney U planlanıyorsa Lehmann asimptotik göreli etkinlik düzeltmesiyle (+%15) örneklem genişletilir.</p>
+
+      <h2>2. Mortalite, Komplikasyon veya Yanıt Oranı Karşılaştırılacaksa</h2>
+      <p>Sonlanım "var/yok" şeklindeyse ortalama formülü kullanılmaz; Fleiss (1981) iki bağımsız oran formülü kullanılır. Kontrol grubunda %15, risk grubunda %35 beklenen olay oranı için α = 0,05 ve %80 güç düzeyinde süreklilik düzeltmeli olarak grup başına en az 82 (toplam 164) olgu gerekir.</p>
+
+      <h2>3. Tanısal Doğruluk ve ROC Eğrisi (AUROC) Çalışmaları</h2>
+      <p>Yeni bir indeksin (örneğin laktat/albümin oranı, SII veya radyolojik skor) tanı koyma gücü araştırılıyorsa t-testi güç analizi hatalıdır. Hanley ve McNeil (1982) yöntemiyle sıfır hipotezi AUROC = 0,50 değerine karşı beklenen AUROC (örneğin 0,75) ve hastalığın kohorttaki oranı üzerinden hasta/kontrol sayıları ayrı ayrı raporlanmalıdır.</p>
+
+      <h2>4. Retrospektif Çalışmalarda "Post-Hoc Güç Analizi" Tuzağı</h2>
+      <p>Tarih aralığındaki tüm hastaların tarandığı retrospektif kohortlarda, gözlenen p değerinden geriye dönük (post-hoc) güç hesaplamak modern biyoistatistik literatüründe hatalı kabul edilir. Bunun yerine eldeki örneklem büyüklüğünün %80 güçle saptayabileceği <strong>asgari saptanabilir etki büyüklüğü (minimum detectable effect size)</strong> raporlanmalıdır.</p>
+
+      <div class="card" style="margin-top:28px; background:var(--bg-alt);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Saniyeler İçinde Kendi Etik Kurul Paragrafınızı Üretin</h3>
+        <p style="margin-bottom:14px;">Ücretsiz hesaplayıcımız yukarıdaki dört tasarımın tamamı için hem grup sayılarını hesaplar hem de Etik Kurul Başvuru Formuna kopyalayıp yapıştırabileceğiniz resmi Türkçe/İngilizce paragrafı otomatik yazar.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="./#araclar" class="btn btn-primary">Ücretsiz Örneklem Hesaplayıcıya Git</a>
+          <a href="./#iletisim" class="btn btn-outline">Uzmanlık Tezi Analiz Desteği Al</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Uzm. Dr. Göktuğ Özkan · <a href="./">Ana Sayfa ve Hesaplayıcılar</a> · <a href="mailto:drozkan2@gmail.com">drozkan2@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>
