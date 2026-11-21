@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klinik Yapay Zeka, Biyobelirteç ROC-AUC (DeLong Testi), Kalibrasyon &amp; Karar Eğrisi Analizi (DCA) | Uzm. Dr. Göktuğ Özkan</title>
+  <meta name="description" content="Tıpta uzmanlık tezi, doçentlik ve SCIE dergiler için DeLong ROC karşılaştırma testi, kalibrasyon eğrisi (Brier skoru), Karar Eğrisi Analizi (Decision Curve Analysis - Net Benefit) ve TRIPOD+AI uyumlu biyoistatistik danışmanlığı." />
+  <link rel="canonical" href="https://goktugozkanmd.github.io/tibbi-biyoistatistik/klinik-yapay-zeka-roc-delong-kalibrasyon-analizi.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Klinik Yapay Zeka, Tanısal Biyobelirteç ROC-AUC (DeLong), Kalibrasyon ve Karar Eğrisi Analizi (DCA) Danışmanlığı",
+        "provider": {
+          "@type": "Person",
+          "name": "Uzm. Dr. Göktuğ Özkan",
+          "jobTitle": "İç Hastalıkları Uzmanı (MD) & SCIE Klinik Bilişim Yazarı / Hakemi"
+        },
+        "areaServed": "TR",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "TRY",
+          "lowPrice": "5500",
+          "highPrice": "14000"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "İki biyobelirteç veya makine öğrenmesi modelinin ROC eğrileri (AUC) nasıl karşılaştırılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aynı hasta grubunda ölçülen iki tanısal indeks veya yapay zeka modelinin AUC değerleri tek başına gözle kıyaslanamaz; DeLong eşleştirilmiş kovaryans testi veya 2.000 tekrarlı tabakalı bootstrap fark testi ile p değeri ve %95 güven aralığı raporlanmalıdır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "SCIE hakemlerinin istediği Karar Eğrisi Analizi (Decision Curve Analysis - DCA) nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vickers ve Elkin tarafından geliştirilen Karar Eğrisi Analizi, klinik eşik olasılıkları boyunca modelin 'Tüm Hastaları Tedavi Et' ve 'Hiçbir Hastayı Tedavi Etme' stratejilerine kıyasla sağladığı gerçek klinik Net Faydayı (Net Benefit) ölçer ve TRIPOD+AI kılavuzunun temel gerekliliklerindendir."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="./" class="brand-title">
+        Tıbbi Biyoistatistik &amp; Klinik Veri Analizi
+        <span class="brand-sub">Uzm. Dr. Göktuğ Özkan · İç Hastalıkları Uzmanı · SCIE Q2 Klinik Bilişim Yazarı</span>
+      </a>
+      <nav class="nav-links">
+        <a href="./">Ana Sayfa</a>
+        <a href="etik-kurul-orneklem-hesaplama.html">Etik Kurul Rehberi</a>
+        <a href="uzmanlik-tezi-istatistik-analizi.html">Uzmanlık Tezi</a>
+        <a href="scie-makale-hakem-revizyonu-istatistik.html">Hakem Revizyonu</a>
+        <a href="docentlik-sagkalim-cox-meta-analiz.html">Sağkalım &amp; Meta-Analiz</a>
+        <a href="./#iletisim" class="btn btn-primary">Veri Ön İnceleme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container article-body" style="max-width:860px;">
+      <div class="kicker">TRIPOD+AI &amp; STARD 2015 · Radyoloji, Kardiyoloji, Yoğun Bakım &amp; Biyobelirteç Çalışmaları</div>
+      <h1 style="color:var(--navy); font-size:28px; margin-bottom:14px;">Klinik Yapay Zeka, Biyobelirteç ROC Karşılaştırması (DeLong), Kalibrasyon ve Karar Eğrisi Analizi (DCA)</h1>
+      <p>Rutin SPSS çıktıları yalnızca tekil ROC eğrisi çizip <em>AUC</em> verir; oysa 2026 yılında SCIE Q1/Q2 dergi hakemleri ve doçentlik jürileri tanısal indeks (ör. <em>NLR, SII, laktat/albümin, radyomiks</em>) veya makine öğrenmesi çalışmalarında <strong>eşleştirilmiş DeLong testi, kalibrasyon eğrisi (slope/intercept, Brier skoru), Net Yeniden Sınıflandırma İyileşmesi (NRI/IDI)</strong> ve <strong>Karar Eğrisi Analizi (Decision Curve Analysis — Net Benefit)</strong> talep etmektedir.</p>
+
+      <h2>SPSS'in Tek Başına Karşılayamadığı 4 Kritik R / Python Çıktısı</h2>
+      <p><strong>1. Eşleştirilmiş DeLong ROC Karşılaştırması ve Optimal Youden <em>J</em> Kesim Noktası:</strong> Aynı kohortta yarışan biyobelirteçlerin veya klinik skorların (ör. <em>SOFA, APACHE-II, yeni ML skoru</em>) ROC eğrileri arasındaki farkın <strong>DeLong kovaryans testi</strong> ve 2.000 tekrarlı <em>bootstrap</em> %95 güven aralığı ile kanıtlanması; duyarlılık, özgüllük, PPV, NPV ve olabilirlik oranlarının (<em>LR+, LR−</em>) Wilson/exact GA ile tablolanması.</p>
+      <p><strong>2. Kalibrasyon Doğrulaması (Calibration Slope, Intercept &amp; Brier Skoru):</strong> Yüksek AUC değerine rağmen modelin riski abartıp abartmadığını gösteren 300 DPI <em>Loess / izotonik kalibrasyon grafikleri</em>, Brier skoru ve beklenen kalibrasyon hatası (ECE).</p>
+      <p><strong>3. Karar Eğrisi Analizi (Decision Curve Analysis — DCA):</strong> Hakemlerin <em>"Bu modelin yatak başı klinik faydası nedir?"</em> sorusunu doğrudan yanıtlayan, klinik eşik olasılıkları boyunca <strong>Net Benefit</strong> kazancını gösteren 300 DPI DCA figürleri.</p>
+      <p><strong>4. TRIPOD+AI &amp; Gönderim Öncesi <code>ManuGate MD</code> Denetimi:</strong> Veri sızıntısı (<em>data leakage</em>) kontrolü, iç/çapraz doğrulama (<em>nested k-fold / optimism-corrected bootstrap</em>), SHAP değişken önem grafikleri ve dergi yüklemesi öncesi <strong><a href="https://goktugozkanmd-manugate-md.static.hf.space" target="_blank" rel="noopener" style="color:var(--teal);">ManuGate MD</a></strong> ile tablo–metin–kaynakça tutarlılık kontrolü.</p>
+
+      <!-- ÜCRETSİZ CANLI ROC KARŞILAŞTIRMA & KARAR EĞRİSİ (NET BENEFIT) HESAPLAYICI -->
+      <div class="card" style="margin:28px 0; border-left:4px solid var(--teal);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Ücretsiz Canlı Araç: İki Model ROC-AUC Karşılaştırması (Hanley–McNeil Eşleştirilmiş Test) &amp; Klinik Net Fayda (DCA)</h3>
+        <p style="font-size:14px; color:var(--muted); margin-bottom:12px;">Olgu/kontrol sayılarınızı, iki biyobelirteç veya modelin AUC değerlerini ve seçilen eşikteki doğru/yanlış pozitif sayılarını girerek %95 GA, model farkı <em>p</em> değerini ve Karar Eğrisi <strong>Net Benefit</strong> kazancını anında hesaplayın.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rocPos">Olay / Hasta Sayısı (n+)</label>
+            <input id="rocPos" type="number" value="84" min="5" />
+          </div>
+          <div class="form-group">
+            <label for="rocNeg">Kontrol / Sağlam Sayısı (n−)</label>
+            <input id="rocNeg" type="number" value="196" min="5" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="auc1">Yeni Model / Biyobelirteç AUC</label>
+            <input id="auc1" type="number" step="0.001" value="0.842" min="0.50" max="0.999" />
+          </div>
+          <div class="form-group">
+            <label for="auc2">Standart Klinik Skor AUC</label>
+            <input id="auc2" type="number" step="0.001" value="0.761" min="0.50" max="0.999" />
+          </div>
+          <div class="form-group">
+            <label for="corrR">Tahmini Model Korelasyonu (r)</label>
+            <input id="corrR" type="number" step="0.05" value="0.45" min="0" max="0.95" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dcaPt">Klinik Karar Eşiği Olasılığı (p_t, %)</label>
+            <input id="dcaPt" type="number" step="1" value="20" min="1" max="95" />
+          </div>
+          <div class="form-group">
+            <label for="dcaSens">Eşikte Duyarlılık (%)</label>
+            <input id="dcaSens" type="number" step="0.5" value="81.0" min="1" max="100" />
+          </div>
+          <div class="form-group">
+            <label for="dcaSpec">Eşikte Özgüllük (%)</label>
+            <input id="dcaSpec" type="number" step="0.5" value="78.5" min="1" max="100" />
+          </div>
+        </div>
+        <button type="button" id="btnRunRocDca" class="btn btn-navy" style="margin-top:8px;">ROC Farkı ve Net Faydayı (DCA) Hesapla</button>
+        <div id="rocDcaResult" style="margin-top:14px; padding:14px; background:var(--bg-alt); border-radius:8px; font-size:14px; line-height:1.65;"></div>
+      </div>
+
+      <h2>Şeffaf Paket Ücretleri (5.500 – 14.000 TL)</h2>
+      <ul>
+        <li><strong>Tanısal Biyobelirteç &amp; DeLong ROC / DCA Paketi (5.500 – 8.500 TL):</strong> Çoklu biyobelirteç DeLong karşılaştırma matrisi, Youden <em>J</em> kesim tabloları, 300 DPI birleşik ROC + Kalibrasyon + Karar Eğrisi (DCA) figürleri ve STARD/TRIPOD uyumlu Türkçe/İngilizce Bulgular metni (48 saat teslim).</li>
+        <li><strong>Klinik Makine Öğrenmesi &amp; TRIPOD+AI Tam Modelleme Paketi (9.000 – 14.000 TL):</strong> Sızıntısız çapraz doğrulama (<em>Logistic, ElasticNet, XGBoost/LightGBM, Random Forest</em>), olasılık kalibrasyonu (Brier/ECE), SHAP açıklanabilirlik grafikleri, DCA Net Benefit analizi ve SCIE dergiye hazır metodoloji/ek materyal paketi.</li>
+        <li><strong>Gönderim Öncesi 24-Saat <code>ManuGate MD</code> + Hekim Denetimi (2.500 – 4.500 TL):</strong> Hazır makalenizin dergiye yüklenmeden önce tablo–özet–metin <em>p</em>/%95 GA tutarlılığı, DOI/PubMed kaynakça doğrulaması ve çift-kör anonimleştirme kontrolü.</li>
+      </ul>
+
+      <div class="card" style="margin-top:28px; background:var(--bg-alt);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Biyobelirteç veya Model Veri Yapınızı Gönderin — Aynı Gün Net Plan</h3>
+        <p style="margin-bottom:14px;">Anonim değişken listenizi veya hakem revizyon mektubunuzu <strong><a href="mailto:drozkan2@gmail.com?subject=ROC%20Kalibrasyon%20veya%20Klinik%20AI%20Analiz%20Talebi" style="color:var(--teal);">drozkan2@gmail.com</a></strong> adresine iletin; örneklem uygunluğunu ve kesin teslim takvimini aynı gün yanıtlayalım.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="mailto:drozkan2@gmail.com?subject=ROC%20Kalibrasyon%20veya%20Klinik%20AI%20Analiz%20Talebi" class="btn btn-primary">E-Posta İle Ön İnceleme İste</a>
+          <a href="https://goktugozkanmd-manugate-md.static.hf.space" target="_blank" rel="noopener" class="btn btn-outline">Ücretsiz ManuGate MD Makale Tarayıcı</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Uzm. Dr. Göktuğ Özkan · <a href="./">Ana Sayfa ve Hesaplayıcılar</a> · <a href="mailto:drozkan2@gmail.com">drozkan2@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    function erfc(x) {
+      var z = Math.abs(x);
+      var t = 1 / (1 + 0.5 * z);
+      var r = t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 +
+        t * (0.09678418 + t * (-0.18628806 + t * (0.27886807 + t * (-1.13520398 +
+        t * (1.48851587 + t * (-0.82215223 + t * 0.17087277)))))))));
+      return x >= 0 ? r : 2 - r;
+    }
+    function hanleySE(auc, nPos, nNeg) {
+      var q1 = auc / (2 - auc);
+      var q2 = (2 * auc * auc) / (1 + auc);
+      var v = (auc * (1 - auc) + (nPos - 1) * (q1 - auc * auc) + (nNeg - 1) * (q2 - auc * auc)) / (nPos * nNeg);
+      return Math.sqrt(Math.max(1e-9, v));
+    }
+    function calc() {
+      var nPos = Number(document.getElementById("rocPos").value);
+      var nNeg = Number(document.getElementById("rocNeg").value);
+      var a1 = Number(document.getElementById("auc1").value);
+      var a2 = Number(document.getElementById("auc2").value);
+      var r = Number(document.getElementById("corrR").value);
+      var pt = Number(document.getElementById("dcaPt").value) / 100;
+      var sens = Number(document.getElementById("dcaSens").value) / 100;
+      var spec = Number(document.getElementById("dcaSpec").value) / 100;
+      var box = document.getElementById("rocDcaResult");
+
+      if ([nPos, nNeg, a1, a2, r, pt, sens, spec].some(isNaN) || nPos < 5 || nNeg < 5 || a1 <= 0.49 || a1 >= 1 || a2 <= 0.49 || a2 >= 1 || pt <= 0 || pt >= 1) {
+        box.textContent = "Lütfen geçerli örneklem, AUC (0,50–0,999) ve eşik yüzdesi giriniz.";
+        return;
+      }
+      var N = nPos + nNeg;
+      var prev = nPos / N;
+      var se1 = hanleySE(a1, nPos, nNeg);
+      var se2 = hanleySE(a2, nPos, nNeg);
+      var lo1 = Math.max(0, a1 - 1.959964 * se1), hi1 = Math.min(1, a1 + 1.959964 * se1);
+      var lo2 = Math.max(0, a2 - 1.959964 * se2), hi2 = Math.min(1, a2 + 1.959964 * se2);
+
+      var diff = a1 - a2;
+      var seDiff = Math.sqrt(Math.max(1e-9, se1 * se1 + se2 * se2 - 2 * r * se1 * se2));
+      var z = Math.abs(diff) / seDiff;
+      var pVal = erfc(z / Math.SQRT2);
+
+      var tpRate = sens * prev;
+      var fpRate = (1 - spec) * (1 - prev);
+      var oddsPt = pt / (1 - pt);
+      var nbModel = tpRate - fpRate * oddsPt;
+      var nbAll = prev - (1 - prev) * oddsPt;
+      var youden = sens + spec - 1;
+      var avoidedPer100 = nbModel > Math.max(0, nbAll) ? ((nbModel - Math.max(0, nbAll)) / oddsPt) * 100 : 0;
+
+      function fmt(v, d) { return v.toFixed(d).replace(".", ","); }
+
+      box.innerHTML =
+        "<strong>1. Eşleştirilmiş ROC-AUC Karşılaştırması (N = " + N + ", Prevalans = %" + fmt(prev * 100, 1) + "):</strong><br/>" +
+        "• <strong>Yeni Model AUC:</strong> " + fmt(a1, 3) + " (%95 GA: " + fmt(lo1, 3) + " – " + fmt(hi1, 3) + ")<br/>" +
+        "• <strong>Standart Skor AUC:</strong> " + fmt(a2, 3) + " (%95 GA: " + fmt(lo2, 3) + " – " + fmt(hi2, 3) + ")<br/>" +
+        "• <strong>ΔAUC Farkı:</strong> " + (diff >= 0 ? "+" : "") + fmt(diff, 3) + " (<em>z</em> = " + fmt(z, 2) + ", <strong><em>p</em> = " + (pVal < 0.001 ? "&lt; 0,001" : fmt(pVal, 4)) + "</strong>) · Youden <em>J</em> = " + fmt(youden, 3) + "<br/>" +
+        "<div style='margin-top:8px; padding-top:8px; border-top:1px solid #cbd5e1;'>" +
+        "<strong>2. Karar Eğrisi Analizi (DCA — Eşik Olasılık p_t = %" + fmt(pt * 100, 0) + "):</strong><br/>" +
+        "• <strong>Model Net Faydası (Net Benefit):</strong> <strong>" + fmt(nbModel, 4) + "</strong> (Tümünü Tedavi Et: " + fmt(nbAll, 4) + " · Hiçbirini Tedavi Etme: 0,0000)<br/>" +
+        "• <strong>Klinik Yorum:</strong> 100 hasta başına duyarlılık kaybı olmaksızın yaklaşık <strong>" + fmt(avoidedPer100, 1) + " gereksiz girişim/tedavi</strong> önlenmektedir.</div>";
+    }
+    document.getElementById("btnRunRocDca").addEventListener("click", calc);
+    calc();
+  })();
+  </script>
+</body>
+</html>

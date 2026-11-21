@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCIE &amp; TR Dizin Dergi Hakem Revizyonu (Major/Minor Revision) İstatistiksel Yanıt | Uzm. Dr. Göktuğ Özkan</title>
+  <meta name="description" content="SCIE, ESCI ve TR Dizin dergilerden gelen Major/Minor Revision istatistiksel hakem eleştirilerine 48 saatte yeniden analiz, çok değişkenli modelleme ve İngilizce Point-by-Point Response desteği." />
+  <link rel="canonical" href="https://goktugozkanmd.github.io/tibbi-biyoistatistik/scie-makale-hakem-revizyonu-istatistik.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "SCIE & TR Dizin Makale Hakem Revizyonu İstatistiksel Yeniden Analiz ve Yanıt Mektubu",
+        "provider": {
+          "@type": "Person",
+          "name": "Uzm. Dr. Göktuğ Özkan",
+          "jobTitle": "İç Hastalıkları Uzmanı (MD) & SCIE Hakemi"
+        },
+        "areaServed": "TR",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "TRY",
+          "lowPrice": "4500",
+          "highPrice": "12500"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Dergi hakemi (Reviewer 2) tüm istatistiksel analizlerin yenilenmesini istedi, kaç günde yetişir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Anonimleştirilmiş veri setiniz ve hakem mektubu ulaştıktan sonra aynı gün madde madde yol haritası çıkarılır; yeniden analiz, 300 DPI revize figürler ve İngilizce Point-by-Point Response metni 48–72 saat içinde teslim edilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Örneklem sayımız küçüktü ve hakem güç (power) veya güven aralığı eleştirisi yaptı, çözülebilir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Retroaktif (post-hoc) gözlenen güç tuzağına düşmeden, güncel biyoistatistik literatürünün önerdiği etki büyüklüğü kesinliği (%95 güven aralığı genişliği), duyarlılık analizi, Firth cezalı lojistik regresyon veya önyükleme (bootstrap) doğrulamasıyla hakem ikna edilir."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="./" class="brand-title">
+        Tıbbi Biyoistatistik &amp; Klinik Veri Analizi
+        <span class="brand-sub">Uzm. Dr. Göktuğ Özkan · İç Hastalıkları Uzmanı · SCIE Yazar &amp; Hakem</span>
+      </a>
+      <nav class="nav-links">
+        <a href="./">Ana Sayfa</a>
+        <a href="etik-kurul-orneklem-hesaplama.html">Etik Kurul Rehberi</a>
+        <a href="uzmanlik-tezi-istatistik-analizi.html">Uzmanlık Tezi</a>
+        <a href="./#iletisim" class="btn btn-primary">Hakem Mektubunu Gönder</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container article-body" style="max-width:860px;">
+      <div class="kicker">SCIE · ESCI · PubMed · TR Dizin Hakem Revizyonu (48–72 Saat)</div>
+      <h1 style="color:var(--navy); font-size:28px; margin-bottom:14px;">Dergi Hakem Revizyonunda (Major / Minor Revision) İstatistiksel Eleştirileri Kabule Dönüştürün</h1>
+      <p>Aylarca emek verdiğiniz klinik çalışmanız dergiden ret almak yerine <strong>Major Revision</strong> veya <strong>Minor Revision</strong> aldıysa kabul kapısı aralanmış demektir. Ancak bu aşamada <em>Applied Clinical Informatics</em> ve <em>JMIR</em> hakemlik süreçlerinde de en sık gördüğümüz hata; hakemin metodolojik itirazına yüzeysel cümlelerle geçiştirme yanıt yazılmasıdır.</p>
+
+      <h2>En Sık Gelen 4 "Reviewer #2" İstatistiksel İtirazı ve Çözümümüz</h2>
+      <p><strong>1. Çoklu Karşılaştırma ve Tip I Hata Şişmesi (Multiple Testing):</strong> Tablolarda 15–20 klinik değişken test edilip düzeltmesiz <em>p &lt; 0,05</em> üzerinden kesin hüküm kurulduğunda hakemler <strong>Benjamini–Hochberg (FDR)</strong> veya Holm–Bonferroni düzeltmesi talep eder.</p>
+      <p><strong>2. Karıştırıcı Faktörler (Confounding) &amp; Küçük Olay Sayısı:</strong> Tek değişkenli (univariate) anlamlılığın yaş, cinsiyet veya komorbidite kontrolünden sonra korunup korunmadığı sorulduğunda; olay sayısına uygun <strong>çok değişkenli modelleme, Firth cezalı regresyon veya eğilim skoru (IPTW / Propensity Matching)</strong> kurgulanır.</p>
+      <p><strong>3. Tablo–Metin ve Odds Ratio (%95 GA) Tutarsızlıkları:</strong> Özet, Bulgular ve Tablo 2 arasındaki hasta sayısı, yüzde veya güven aralığı uyuşmazlıkları deterministik Python kontrol betikleriyle sıfır hataya indirilir.</p>
+      <p><strong>4. TRIPOD+AI, STROBE ve CONSORT Raporlama Eksikleri:</strong> Eksik veri yönetimi, kalibrasyon (Brier skoru / kalibrasyon eğrisi) ve DeLong ROC karşılaştırmaları hakemin istediği uluslararası standartta tamamlanır.</p>
+
+      <!-- ÜCRETSİZ HAKEM KONTROL ARACI: 2x2 OR & %95 GA DOĞRULAYICI -->
+      <div class="card" style="margin:28px 0; border-left:4px solid var(--teal);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Ücretsiz Tablo Denetim Aracı: 2×2 Odds Ratio, Rölatif Risk ve %95 Güven Aralığı Doğrulayıcı</h3>
+        <p style="font-size:14px; color:var(--muted); margin-bottom:14px;">Makalenizdeki 2×2 çapraz tablo hücre sayılarını girerek tablonuzda raporlanan Odds Ratio ve %95 güven aralığının matematiksel olarak doğru olup olmadığını anında kontrol edin (sıfır hücrelerde Haldane–Anscombe 0,5 düzeltmesi otomatik uygulanır).</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cellA">Maruziyet (+) / Olay (+) [a]</label>
+            <input id="cellA" type="number" min="0" value="28" />
+          </div>
+          <div class="form-group">
+            <label for="cellB">Maruziyet (+) / Olay (-) [b]</label>
+            <input id="cellB" type="number" min="0" value="72" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cellC">Maruziyet (-) / Olay (+) [c]</label>
+            <input id="cellC" type="number" min="0" value="14" />
+          </div>
+          <div class="form-group">
+            <label for="cellD">Maruziyet (-) / Olay (-) [d]</label>
+            <input id="cellD" type="number" min="0" value="86" />
+          </div>
+        </div>
+        <button type="button" id="btnVerifyOR" class="btn btn-navy">Tablo İstatistiklerini Doğrula</button>
+        <div id="orResultBox" style="margin-top:14px; padding:14px; background:var(--bg-alt); border-radius:8px; font-size:14px; line-height:1.6;"></div>
+      </div>
+
+      <h2>Teslim Paketi ve Şeffaf Ücretlendirme (4.500 – 12.500 TL)</h2>
+      <ul>
+        <li><strong>Minor İstatistiksel Revizyon &amp; Yanıt Mektubu (4.500 TL):</strong> Ek alt grup/duyarlılık testi, p-değeri/güven aralığı düzeltmeleri, revize Word tabloları ve hakem maddelerine birebir İngilizce <em>Point-by-Point Response</em> metni.</li>
+        <li><strong>Major Revizyon &amp; Yeniden Modelleme Paketi (8.500 – 12.500 TL):</strong> Veri setinin baştan analizi, çok değişkenli Cox/lojistik/Poisson modelleri, 300 DPI yayın kalitesinde yeni ROC/kalibrasyon/orman (forest) grafikleri, <em>Tracked Changes</em> bulgular/metodoloji revizyonu ve eksiksiz İngilizce hakem yanıt mektubu.</li>
+      </ul>
+
+      <div class="card" style="margin-top:28px; background:var(--bg-alt);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Hakem Mektubunuzu İletin — Aynı Gün Ücretsiz Ön Değerlendirme</h3>
+        <p style="margin-bottom:14px;">Editör karar mektubunu (hakem yorumlarını) ve anonim veri yapınızı <strong><a href="mailto:drozkan2@gmail.com?subject=Dergi%20Hakem%20Revizyonu%20On%20Inceleme" style="color:var(--teal);">drozkan2@gmail.com</a></strong> adresine iletin; her bir hakem maddesinin nasıl çözüleceğini ve net teslim takvimini aynı gün yanıtlayalım.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="mailto:drozkan2@gmail.com?subject=Dergi%20Hakem%20Revizyonu%20On%20Inceleme" class="btn btn-primary">Hakem Mektubunu E-Posta İle Gönder</a>
+          <a href="./#paketler" class="btn btn-outline">Tüm Paketleri İncele</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Uzm. Dr. Göktuğ Özkan · <a href="./">Ana Sayfa ve Hesaplayıcılar</a> · <a href="mailto:drozkan2@gmail.com">drozkan2@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    function erfc(x) {
+      var z = Math.abs(x);
+      var t = 1 / (1 + 0.5 * z);
+      var r = t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 +
+        t * (0.09678418 + t * (-0.18628806 + t * (0.27886807 + t * (-1.13520398 +
+        t * (1.48851587 + t * (-0.82215223 + t * 0.17087277)))))))));
+      return x >= 0 ? r : 2 - r;
+    }
+    function runVerify() {
+      var a = Number(document.getElementById("cellA").value);
+      var b = Number(document.getElementById("cellB").value);
+      var c = Number(document.getElementById("cellC").value);
+      var d = Number(document.getElementById("cellD").value);
+      var box = document.getElementById("orResultBox");
+      if ([a, b, c, d].some(function (v) { return isNaN(v) || v < 0; }) || (a + b === 0) || (c + d === 0)) {
+        box.textContent = "Lütfen geçerli negatif olmayan hücre sayıları giriniz.";
+        return;
+      }
+      var corr = (a === 0 || b === 0 || c === 0 || d === 0) ? 0.5 : 0;
+      var aa = a + corr, bb = b + corr, cc = c + corr, dd = d + corr;
+      var orVal = (aa * dd) / (bb * cc);
+      var seLogOR = Math.sqrt(1 / aa + 1 / bb + 1 / cc + 1 / dd);
+      var orLow = Math.exp(Math.log(orVal) - 1.959964 * seLogOR);
+      var orHigh = Math.exp(Math.log(orVal) + 1.959964 * seLogOR);
+      var zStat = Math.abs(Math.log(orVal)) / seLogOR;
+      var pVal = erfc(zStat / Math.SQRT2);
+      var r1 = a / (a + b), r0 = c / (c + d);
+      var rrVal = r0 > 0 ? (r1 / r0) : NaN;
+      var pText = pVal < 0.001 ? "< 0,001" : pVal.toFixed(4).replace(".", ",");
+      box.innerHTML =
+        "<strong>Doğrulanan Sonuçlar" + (corr ? " (Haldane–Anscombe 0,5 düzeltmeli)" : "") + ":</strong><br/>" +
+        "• <strong>Odds Ratio (OR):</strong> " + orVal.toFixed(2).replace(".", ",") +
+        " (%95 GA: " + orLow.toFixed(2).replace(".", ",") + " – " + orHigh.toFixed(2).replace(".", ",") + "), <em>p</em> = " + pText + "<br/>" +
+        "• <strong>Grup Olay Oranları:</strong> %" + (r1 * 100).toFixed(1).replace(".", ",") + " (" + a + "/" + (a + b) + ") vs. %" +
+        (r0 * 100).toFixed(1).replace(".", ",") + " (" + c + "/" + (c + d) + ")" +
+        (isFinite(rrVal) ? " · <strong>Rölatif Risk (RR):</strong> " + rrVal.toFixed(2).replace(".", ",") : "") +
+        (r0 > 0.20 ? "<br/><span style='color:#b45309;'><strong>Hakem Uyarısı:</strong> Kontrol grubu olay sıklığı %20'nin üzerinde olduğu için Odds Ratio gerçek rölatif riski abartmaktadır; SCIE revizyonunda Modifiye Poisson (robust SE) ile düzeltilmiş Prevalans/Risk Oranı raporlanması önerilir.</span>" : "");
+    }
+    document.getElementById("btnVerifyOR").addEventListener("click", runVerify);
+    runVerify();
+  })();
+  </script>
+</body>
+</html>

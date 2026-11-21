@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doçentlik &amp; Uzmanlık Sağkalım Analizi (Kaplan-Meier, Cox) ve PRISMA Meta-Analiz | Uzm. Dr. Göktuğ Özkan</title>
+  <meta name="description" content="ÜAK Doçentlik başvurusu, SCIE makale ve tıpta uzmanlık tezleri için Kaplan-Meier, çok değişkenli Cox regresyon, Propensity Score Matching ve PRISMA 2020 Meta-Analiz (Forest Plot, I² heterojenite) biyoistatistik danışmanlığı." />
+  <link rel="canonical" href="https://goktugozkanmd.github.io/tibbi-biyoistatistik/docentlik-sagkalim-cox-meta-analiz.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Doçentlik & SCIE Sağkalım Analizi (Kaplan-Meier, Cox Regresyon) ve PRISMA Meta-Analiz Danışmanlığı",
+        "provider": {
+          "@type": "Person",
+          "name": "Uzm. Dr. Göktuğ Özkan",
+          "jobTitle": "İç Hastalıkları Uzmanı (MD) & SCIE Yazar / Hakem"
+        },
+        "areaServed": "TR",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "TRY",
+          "lowPrice": "6000",
+          "highPrice": "15000"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "PRISMA 2020 uyumlu meta-analiz çalışmasında hangi istatistiksel çıktılar teslim edilir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sabit ve DerSimonian-Laird / REML rastgele etkiler modelleri, Cochran Q ve I² heterojenite istatistikleri, yüksek çözünürlüklü (300 DPI) Forest Plot ve Funnel Plot grafikleri, Egger yayın yanlılığı testi ve tek-çalışma çıkarma (leave-one-out) duyarlılık analizi eksiksiz teslim edilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Cox regresyon analizinde orantılı tehlikeler (proportional hazards) varsayımı bozulursa ne yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Schoenfeld artıkları testiyle her değişken için orantılı tehlikeler varsayımı denetlenir; ihlal saptandığında zamana bağımlı eşdeğişken (time-varying covariate), tabakalı (stratified) Cox modeli veya kısıtlı ortalama sağkalım süresi (RMST) analizi uygulanır."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="./" class="brand-title">
+        Tıbbi Biyoistatistik &amp; Klinik Veri Analizi
+        <span class="brand-sub">Uzm. Dr. Göktuğ Özkan · İç Hastalıkları Uzmanı · SCIE Yazar &amp; Hakem</span>
+      </a>
+      <nav class="nav-links">
+        <a href="./">Ana Sayfa</a>
+        <a href="etik-kurul-orneklem-hesaplama.html">Etik Kurul Rehberi</a>
+        <a href="uzmanlik-tezi-istatistik-analizi.html">Uzmanlık Tezi</a>
+        <a href="scie-makale-hakem-revizyonu-istatistik.html">Hakem Revizyonu</a>
+        <a href="./#iletisim" class="btn btn-primary">Veri Ön İnceleme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container article-body" style="max-width:860px;">
+      <div class="kicker">ÜAK Doçentlik · SCIE Q1/Q2 · Onkoloji, Yoğun Bakım &amp; Klinik Kohortlar</div>
+      <h1 style="color:var(--navy); font-size:28px; margin-bottom:14px;">Sağkalım Analizi (Kaplan–Meier, Cox Regresyon), Eğilim Skoru ve PRISMA 2020 Meta-Analiz</h1>
+      <p>Standart <em>t-testi</em> ve ki-kare tabloları birçok klinisyen tarafından SPSS üzerinden yapılabilirken; SCIE Q1/Q2 dergilerin ve ÜAK Doçentlik jürilerinin aradığı <strong>çok değişkenli Cox sağkalım modelleri, yarışan riskler (Fine–Gray), Propensity Score Matching / IPTW</strong> ve <strong>PRISMA 2020 Meta-Analiz</strong> çalışmaları R ve Python tabanlı ileri modelleme gerektirir.</p>
+
+      <h2>Hekim Denetiminde İleri Klinik Modelleme Kapsamı</h2>
+      <p><strong>1. Sağkalım ve Zaman–Olay Modellemesi:</strong> Kaplan–Meier eğrileri (risk tablosu ile birlikte 300 DPI çizim), Log-rank testi, çok değişkenli Cox orantılı tehlikeler regresyonu (<em>aHR, %95 GA</em>), Schoenfeld artıkları doğrulaması, <em>immortal-time bias</em> (landmark) kontrolü ve ölüm dışındaki sonlanımlar için <strong>Fine–Gray yarışan risk (competing risks)</strong> analizi.</p>
+      <p><strong>2. Gözlemsel Kohortlarda Nedensel Çıkarım (Propensity Score):</strong> Retrospektif hastane veya yoğun bakım verilerinde tedavi grupları arasındaki bazal dengesizliği gideren 1:1 / 1:k <strong>Propensity Score Matching</strong>, ters olasılık ağırlıklandırması (IPTW / Overlap Weighting) ve <em>Love Plot</em> (<code>|SMD| &lt; 0,10</code>) denge kanıtı.</p>
+      <p><strong>3. PRISMA 2020 Sistematik Derleme ve Meta-Analiz:</strong> İkili (OR, RR, HR) ve sürekli (SMD / MD) sonlanımlar için <strong>DerSimonian–Laird / REML rastgele etkiler</strong> meta-analizi, <em>I²</em> ve <em>τ²</em> heterojenite analizi, yayın kalitesinde <strong>Forest Plot &amp; Funnel Plot</strong>, Egger testi ve <em>leave-one-out</em> duyarlılık raporlaması.</p>
+
+      <!-- ÜCRETSİZ CANLI META-ANALİZ (DERSIMONIAN-LAIRD I² & HAVUZLANMIŞ OR) HESAPLAYICI -->
+      <div class="card" style="margin:28px 0; border-left:4px solid var(--teal);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Ücretsiz Canlı Araç: PRISMA Meta-Analiz (DerSimonian–Laird Rastgele Etkiler, I² ve Mini Forest Plot)</h3>
+        <p style="font-size:14px; color:var(--muted); margin-bottom:12px;">Her satıra <code>Çalışma_Adı, a, b, c, d</code> (tedavi olay/olay-yok, kontrol olay/olay-yok) değerlerini girerek sabit ve rastgele etkiler havuzlanmış Odds Ratio (%95 GA), Cochran <em>Q</em> ve <em>I²</em> heterojenite yüzdesini anında hesaplayın.</p>
+        <div class="form-group">
+          <label for="metaInput">Çalışma Verileri (Her satır: ÇalışmaAdı, Tedavi_Olay, Tedavi_Sağ, Kontrol_Olay, Kontrol_Sağ)</label>
+          <textarea id="metaInput" rows="5" style="width:100%; font-family:monospace; font-size:13px; padding:10px; border:1px solid var(--border); border-radius:8px;">Kaya_2022, 18, 82, 31, 69
+Demir_2023, 12, 68, 24, 56
+Yilmaz_2024, 25, 115, 38, 102
+Aydin_2025, 9, 51, 19, 41</textarea>
+        </div>
+        <button type="button" id="btnRunMeta" class="btn btn-navy" style="margin-top:10px;">Meta-Analiz ve I² Hesapla</button>
+        <div id="metaResultBox" style="margin-top:14px; padding:14px; background:var(--bg-alt); border-radius:8px; font-size:14px; line-height:1.65;"></div>
+      </div>
+
+      <h2>Şeffaf Paket Ücretleri (6.000 – 15.000 TL)</h2>
+      <ul>
+        <li><strong>Sağkalım &amp; Cox Regresyon / Propensity Score Paketi (6.000 – 9.500 TL):</strong> Veri temizliği, Kaplan–Meier risk tablolu 300 DPI figürler, tek ve çok değişkenli Cox/IPTW modelleri, Schoenfeld ve SMD doğrulama tabloları ile İngilizce/Türkçe STROBE uyumlu Bulgular ve Metodoloji metni (48–72 saat teslim).</li>
+        <li><strong>PRISMA 2020 Tam Meta-Analiz İstatistik &amp; Figür Paketi (8.500 – 15.000 TL):</strong> Çıkarılmış çalışma tablosundan itibaren sabit/rastgele etkiler meta-analizi, alt grup ve meta-regresyon, <em>leave-one-out</em> duyarlılık testi, 300 DPI Forest/Funnel Plot çizimleri ve dergiye hazır PRISMA istatistiksel yöntem/bulgular raporu.</li>
+      </ul>
+
+      <div class="card" style="margin-top:28px; background:var(--bg-alt);">
+        <h3 style="color:var(--navy); margin-bottom:8px;">Veri Özeti veya Çalışma Tablonuzu Gönderin — Aynı Gün Net Yol Haritası</h3>
+        <p style="margin-bottom:14px;">Hedef derginizi ve anonim veri yapınızı (veya meta-analiz çalışma listenizi) <strong><a href="mailto:drozkan2@gmail.com?subject=Sagkalim%20veya%20Meta-Analiz%20On%20Inceleme" style="color:var(--teal);">drozkan2@gmail.com</a></strong> adresine gönderin; uygun model planını ve kesin teslim süresini aynı gün paylaşalım.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="mailto:drozkan2@gmail.com?subject=Sagkalim%20veya%20Meta-Analiz%20On%20Inceleme" class="btn btn-primary">E-Posta İle Ön İnceleme İste</a>
+          <a href="scie-makale-hakem-revizyonu-istatistik.html" class="btn btn-outline">Hakem Revizyonu Paketi</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Uzm. Dr. Göktuğ Özkan · <a href="./">Ana Sayfa ve Hesaplayıcılar</a> · <a href="mailto:drozkan2@gmail.com">drozkan2@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    function erfc(x) {
+      var z = Math.abs(x);
+      var t = 1 / (1 + 0.5 * z);
+      var r = t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 +
+        t * (0.09678418 + t * (-0.18628806 + t * (0.27886807 + t * (-1.13520398 +
+        t * (1.48851587 + t * (-0.82215223 + t * 0.17087277)))))))));
+      return x >= 0 ? r : 2 - r;
+    }
+    function runMeta() {
+      var raw = document.getElementById("metaInput").value.trim();
+      var box = document.getElementById("metaResultBox");
+      var lines = raw.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
+      if (lines.length < 2) {
+        box.textContent = "Meta-analiz için en az 2 çalışma satırı giriniz.";
+        return;
+      }
+      var studies = [];
+      for (var i = 0; i < lines.length; i++) {
+        var parts = lines[i].split(",").map(function (s) { return s.trim(); });
+        if (parts.length < 5) {
+          box.textContent = "Satır " + (i + 1) + " format hatası: ÇalışmaAdı, a, b, c, d şeklinde 5 alan giriniz.";
+          return;
+        }
+        var a = Number(parts[1]), b = Number(parts[2]), c = Number(parts[3]), d = Number(parts[4]);
+        if ([a, b, c, d].some(function (v) { return isNaN(v) || v < 0; }) || (a + b === 0) || (c + d === 0)) {
+          box.textContent = "Satır " + (i + 1) + " için geçerli hücre sayıları giriniz.";
+          return;
+        }
+        var corr = (a === 0 || b === 0 || c === 0 || d === 0) ? 0.5 : 0;
+        var aa = a + corr, bb = b + corr, cc = c + corr, dd = d + corr;
+        var yi = Math.log((aa * dd) / (bb * cc));
+        var vi = 1 / aa + 1 / bb + 1 / cc + 1 / dd;
+        studies.push({ name: parts[0], yi: yi, vi: vi, wi: 1 / vi });
+      }
+      var k = studies.length;
+      var sumW = 0, sumWY = 0, sumW2 = 0;
+      studies.forEach(function (s) { sumW += s.wi; sumWY += s.wi * s.yi; sumW2 += s.wi * s.wi; });
+      var muFE = sumWY / sumW;
+      var seFE = Math.sqrt(1 / sumW);
+      var Q = 0;
+      studies.forEach(function (s) { Q += s.wi * Math.pow(s.yi - muFE, 2); });
+      var df = k - 1;
+      var C = sumW - (sumW2 / sumW);
+      var tau2 = Math.max(0, (Q - df) / C);
+      var I2 = Q > df ? ((Q - df) / Q) * 100 : 0;
+      var sumWStar = 0, sumWStarY = 0;
+      studies.forEach(function (s) {
+        var ws = 1 / (s.vi + tau2);
+        s.ws = ws;
+        sumWStar += ws;
+        sumWStarY += ws * s.yi;
+      });
+      var muRE = sumWStarY / sumWStar;
+      var seRE = Math.sqrt(1 / sumWStar);
+      var orRE = Math.exp(muRE), loRE = Math.exp(muRE - 1.959964 * seRE), hiRE = Math.exp(muRE + 1.959964 * seRE);
+      var zRE = Math.abs(muRE) / seRE;
+      var pRE = erfc(zRE / Math.SQRT2);
+      var orFE = Math.exp(muFE), loFE = Math.exp(muFE - 1.959964 * seFE), hiFE = Math.exp(muFE + 1.959964 * seFE);
+
+      var rowsHtml = studies.map(function (s) {
+        var orS = Math.exp(s.yi), loS = Math.exp(s.yi - 1.959964 * Math.sqrt(s.vi)), hiS = Math.exp(s.yi + 1.959964 * Math.sqrt(s.vi));
+        var wPct = ((s.ws / sumWStar) * 100).toFixed(1).replace(".", ",");
+        return "• <code>" + s.name.replace(/[<>&]/g, "") + "</code>: OR = " + orS.toFixed(2).replace(".", ",") +
+          " (%95 GA: " + loS.toFixed(2).replace(".", ",") + "–" + hiS.toFixed(2).replace(".", ",") + ") · Ağırlık: %" + wPct;
+      }).join("<br/>");
+
+      box.innerHTML =
+        "<strong>DerSimonian–Laird Rastgele Etkiler Sonucu (k = " + k + " çalışma):</strong><br/>" +
+        "• <strong>Havuzlanmış OR (Random-Effects):</strong> " + orRE.toFixed(2).replace(".", ",") +
+        " (%95 GA: " + loRE.toFixed(2).replace(".", ",") + " – " + hiRE.toFixed(2).replace(".", ",") + "), <em>p</em> = " +
+        (pRE < 0.001 ? "&lt; 0,001" : pRE.toFixed(4).replace(".", ",")) + "<br/>" +
+        "• <strong>Sabit Etkiler OR (Fixed-Effect):</strong> " + orFE.toFixed(2).replace(".", ",") +
+        " (%95 GA: " + loFE.toFixed(2).replace(".", ",") + " – " + hiFE.toFixed(2).replace(".", ",") + ")<br/>" +
+        "• <strong>Heterojenite:</strong> Cochran <em>Q</em> = " + Q.toFixed(2).replace(".", ",") + " (sd = " + df + ") · " +
+        "<strong><em>I²</em> = %" + I2.toFixed(1).replace(".", ",") + "</strong> · <em>τ²</em> = " + tau2.toFixed(4).replace(".", ",") + "<br/>" +
+        "<div style='margin-top:8px; padding-top:8px; border-top:1px solid #cbd5e1; font-size:13px;'>" + rowsHtml + "</div>";
+    }
+    document.getElementById("btnRunMeta").addEventListener("click", runMeta);
+    runMeta();
+  })();
+  </script>
+</body>
+</html>
